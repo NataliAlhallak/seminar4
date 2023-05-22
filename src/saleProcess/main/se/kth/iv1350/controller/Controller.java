@@ -35,12 +35,10 @@ public class Controller {
             sale.registerItem(checkItem.getItemInfo(), itemQuantity);
             return checkItem.getItemInfo();
 
-        } catch (SQLException error) {
-            throw new DatabaseFailureException("The Database server is failed to be connected", (Exception) error.getCause());
-
         } catch (ItemIsNotFoundException error) {
             throw new InvalidItemIdentifierException();
-
+        } catch (SQLException error) {
+            throw new DatabaseFailureException();
         }
     }
 

@@ -9,17 +9,23 @@ public class View {
         this.contr = contr;
     }
 
-    public void sampleExecution() {
+    public void sampleExecution()  {
         System.out.println("Welcome to the store");
         contr.startNewSale();
         int itemId = 98762;
         int quantity = 6;
+        try {
+            System.out.println("New Scanned Item" + contr.scanItems(itemId, quantity));
+            System.out.println("New Scanned Item" + contr.scanItems(98763, 1));
+            contr.registerPayment(500);
 
+        } catch (InvalidItemIdentifierException error){
+            System.out.println("This Item Identifier" +itemId + "Is Not Valid");
 
-        System.out.println("New Scanned Item" + contr.scanItems(itemId, quantity));
-        System.out.println("New Scanned Item" + contr.scanItems(98763, 1));
+        } catch (DatabaseFailureException error){
+            
+        }
 
-        contr.registerPayment(500);
         contr.endCurrentSale();
     }
 }

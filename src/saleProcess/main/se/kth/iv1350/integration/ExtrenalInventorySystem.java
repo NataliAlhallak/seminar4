@@ -1,7 +1,11 @@
 package saleProcess.main.se.kth.iv1350.integration;
 
+import saleProcess.main.se.kth.iv1350.controller.DatabaseFailureException;
 import saleProcess.main.se.kth.iv1350.controller.ItemIsNotFoundException;
 import saleProcess.main.se.kth.iv1350.model.*;
+
+import java.sql.SQLException;
+
 public class ExtrenalInventorySystem {
     private PurchaseItems[] StoresInventory = new PurchaseItems[5];
     private PurchaseItems finalItem;
@@ -31,8 +35,11 @@ public class ExtrenalInventorySystem {
      * @param itemID is the items identifier and used to identify the item.
      * @return items information.
      */
-    public PurchaseItems getItemInfo(int itemID) throws ItemIsNotFoundException {
+    public PurchaseItems getItemInfo(int itemID) throws SQLException, ItemIsNotFoundException {
         storesItems();
+        if(itemID == 98765){
+            throw new SQLException();
+        }
         finalItem = null;
         for (PurchaseItems item : StoresInventory) {
             if (item.getItemIdenitifier() == itemID) {
