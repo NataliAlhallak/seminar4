@@ -1,6 +1,5 @@
 package saleProcess.main.se.kth.iv1350.integration;
 
-import saleProcess.main.se.kth.iv1350.controller.DatabaseFailureException;
 import saleProcess.main.se.kth.iv1350.controller.ItemIsNotFoundException;
 import saleProcess.main.se.kth.iv1350.model.*;
 
@@ -41,11 +40,14 @@ public class ExtrenalInventorySystem {
             throw new SQLException();
         }
         for (PurchaseItems item : StoresInventory) {
-           return item;
+            if (item.getItemIdenitifier() == itemID) {
+             finalItem = item;
 
             }
-        throw new  ItemIsNotFoundException();
+            throw new ItemIsNotFoundException();
         }
+        return finalItem;
+    }
 
 
         /**

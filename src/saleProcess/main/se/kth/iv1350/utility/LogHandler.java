@@ -1,4 +1,4 @@
-package saleProcess.main.se.kth.iv1350.view;
+package saleProcess.main.se.kth.iv1350.utility;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.util.Date;
 public class LogHandler {
     public static final String LOG_FILE_Name = "error-log.txt";
     private PrintWriter logFile;
+    StringBuilder logMsgBuilder = new StringBuilder();
 
     public LogHandler() {
         try {
@@ -18,7 +19,7 @@ public class LogHandler {
     }
 
     public void logException (Exception exception){
-        StringBuilder logMsgBuilder = new StringBuilder();
+        logMsgBuilder.setLength(0);
         logMsgBuilder.append(createTime());
         logMsgBuilder.append(", Exception Occurred during sale process: ");
         logMsgBuilder.append(exception.getMessage());

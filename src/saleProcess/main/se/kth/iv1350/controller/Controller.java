@@ -33,10 +33,12 @@ public class Controller {
             PurchaseItems checkItem = inventorySystem.getItemInfo(itemID);
             sale.registerItem(checkItem.getItemInfo(), itemQuantity);
             return checkItem.getItemInfo();
-        } catch (ItemIsNotFoundException error) {
-            throw new InvalidItemIdentifierException();
+
         } catch (SQLException error) {
             throw new DatabaseFailureException();
+
+        } catch (ItemIsNotFoundException error) {
+            throw new InvalidItemIdentifierException();
         }
     }
 

@@ -46,8 +46,8 @@ public class ControllerTest {
         void testScanTheSameItems() {
             try{
 
-            ItemDTO expectedItem = new ItemDTO("Milk", 33, 27.6);
-            ItemDTO scannedItem = contr.scanItems(98763,1);
+            ItemDTO expectedItem =  new ItemDTO("Apples", 43, 38.3);
+            ItemDTO scannedItem = contr.scanItems(98765,1);
 
             assertEquals(expectedItem,scannedItem,"The items do not match");
 
@@ -68,7 +68,7 @@ public class ControllerTest {
       @Test
         void testPayment() throws InvalidItemIdentifierException, DatabaseFailureException {
             try {
-                contr.scanItems(98764,1);
+                contr.scanItems(98765,1);
             }catch (InvalidItemIdentifierException | DatabaseFailureException error){
                 fail("An Exception occurred"+ error.getMessage());
             }
