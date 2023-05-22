@@ -2,6 +2,9 @@ package saleProcess.main.se.kth.iv1350.controller;
 
 import saleProcess.main.se.kth.iv1350.model.*;
 import saleProcess.main.se.kth.iv1350.integration.*;
+
+import java.sql.SQLException;
+
 public class Controller {
     private Sale sale;
     private Register paymentRegister;
@@ -25,14 +28,17 @@ public class Controller {
         return sale;
     }
 
-    public ItemDTO scanItems(int itemID, int itemQuantity) throws InvalidItemIdentifierException {
+    public ItemDTO scanItems(int itemID, int itemQuantity) throws InvalidItemIdentifierException, DatabaseFailureException {
         PurchaseItems checkItem;
         try {
             checkItem = inventorySystem.getItemInfo(itemID);
             sale.registerItem(checkItem.getItemInfo(), itemQuantity);
             return checkItem.getItemInfo();
+
         } catch (ItemIsNotFoundException error) {
             throw new InvalidItemIdentifierException();
+        } catch (SQLException error){
+            throw new DatabaseFailureException();
         }
     }
 

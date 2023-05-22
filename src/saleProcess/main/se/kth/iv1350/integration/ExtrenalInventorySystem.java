@@ -1,5 +1,6 @@
 package saleProcess.main.se.kth.iv1350.integration;
 
+import saleProcess.main.se.kth.iv1350.controller.ItemIsNotFoundException;
 import saleProcess.main.se.kth.iv1350.model.*;
 public class ExtrenalInventorySystem {
     private PurchaseItems[] StoresInventory = new PurchaseItems[5];
@@ -30,16 +31,16 @@ public class ExtrenalInventorySystem {
      * @param itemID is the items identifier and used to identify the item.
      * @return items information.
      */
-    public PurchaseItems getItemInfo(int itemID) {
+    public PurchaseItems getItemInfo(int itemID) throws ItemIsNotFoundException {
         storesItems();
+        finalItem = null;
         for (PurchaseItems item : StoresInventory) {
             if (item.getItemIdenitifier() == itemID) {
                 finalItem = item;
-
-                return finalItem;
+                break;
             }
-            else {
-                finalItem = null;
+            if (finalItem ==null){
+                throw new ItemIsNotFoundException();
             }
         }
         return finalItem;
