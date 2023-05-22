@@ -4,7 +4,10 @@ import saleProcess.main.se.kth.iv1350.model.*;
 import saleProcess.main.se.kth.iv1350.integration.*;
 
 import java.sql.SQLException;
- /**
+import java.util.ArrayList;
+import java.util.List;
+
+/**
   * This class is the main controller for the application.
   * It handles all requests that involve interacting with the model.
   * 
@@ -19,6 +22,8 @@ public class Controller {
     private Printer printReceipt;
     private ExternalAccountingSystem acctSystem;
     private SaleDTO saleInfo;
+
+     private List<TotalRevenueObserver> paymentObservers = new ArrayList<>();
     /**
       * 
       * @param regCreator is object used to get the payment register.
@@ -82,16 +87,27 @@ public class Controller {
      * @return the calculated change to be given back to the customer.
      */
 
+    public void addObserver(TotalRevenueObserver obs){
+        paymentObservers.add(obs);
+
+    }
     public double registerPayment(double amountPayment) {
 
         totalPayment = new Payment(amountPayment);
         sale.updateInformation(totalPayment);
-        sale.registerPayment(totalPayment);
-        paymentRegister.PaymentAmount(totalPayment);
-        sale.createReceipt(printReceipt);
         acctSystem.UpdateAccountingSystem(saleInfo);
         inventorySystem.updateExtrenalInventorySystem(saleInfo);
         double change = sale.getSaleInfo().getChange();
+
+        for(TotalRevenueObserver observer : paymentObservers) {
+            paymentRegister.addObserver(observer);
+        }
+
+        sale.registerPayment(totalPayment);
+        paymentRegister.PaymentAmount(totalPayment);
+        sale.createReceipt(printReceipt);
         return change;
     }
+
+
 }
