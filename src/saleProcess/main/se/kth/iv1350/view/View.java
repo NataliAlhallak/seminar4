@@ -4,9 +4,11 @@ import saleProcess.main.se.kth.iv1350.controller.*;
 
 public class View {
     private Controller contr;
+    LogHandler logHandler;
 
     public View(Controller contr) {
         this.contr = contr;
+        logHandler = new LogHandler();
     }
 
     public void sampleExecution()  {
@@ -23,7 +25,8 @@ public class View {
             System.out.println("This Item Identifier" +itemId + "Is Not Valid");
 
         } catch (DatabaseFailureException error){
-            
+            logHandler.logException(error);
+            System.out.println("Database error : the item identifier could not be fetched");
         }
 
         contr.endCurrentSale();

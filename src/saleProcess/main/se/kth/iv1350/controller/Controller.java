@@ -29,12 +29,10 @@ public class Controller {
     }
 
     public ItemDTO scanItems(int itemID, int itemQuantity) throws InvalidItemIdentifierException, DatabaseFailureException {
-        PurchaseItems checkItem;
         try {
-            checkItem = inventorySystem.getItemInfo(itemID);
+            PurchaseItems checkItem = inventorySystem.getItemInfo(itemID);
             sale.registerItem(checkItem.getItemInfo(), itemQuantity);
             return checkItem.getItemInfo();
-
         } catch (ItemIsNotFoundException error) {
             throw new InvalidItemIdentifierException();
         } catch (SQLException error) {

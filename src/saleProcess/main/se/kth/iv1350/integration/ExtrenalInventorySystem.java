@@ -37,21 +37,15 @@ public class ExtrenalInventorySystem {
      */
     public PurchaseItems getItemInfo(int itemID) throws SQLException, ItemIsNotFoundException {
         storesItems();
-        if(itemID == 98765){
+        if (itemID == 98765) {
             throw new SQLException();
         }
-        finalItem = null;
         for (PurchaseItems item : StoresInventory) {
-            if (item.getItemIdenitifier() == itemID) {
-                finalItem = item;
-                break;
+           return item;
+
             }
-            if (finalItem ==null){
-                throw new ItemIsNotFoundException();
-            }
+        throw new  ItemIsNotFoundException();
         }
-        return finalItem;
-    }
 
 
         /**
