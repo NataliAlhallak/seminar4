@@ -6,10 +6,11 @@ public class ItemDTO {
     private final double itemVAT;
 
     /**
-     * Creates an instance to desripe an item.
-     * @param name the name of the item.
-     * @param price the price of the item.
-     * @param itemVAT the item VAT rate.
+     * Creates an instance of the ItemDTO class to describe an item.
+     *
+     * @param name      The name of the item.
+     * @param price     The price of the item.
+     * @param itemVAT   The item VAT rate.
      */
     public ItemDTO (String name, double price, double itemVAT){
         this.nameOfTheItem = name;
@@ -17,26 +18,29 @@ public class ItemDTO {
         this.itemVAT = itemVAT;
     }
 
-
     /**
-     * gets the name of the item.
-     * @return the name of the item.
+     * Gets the name of the item.
+     *
+     * @return The name of the item.
      */
     public String getItemsName(){
         return nameOfTheItem;
     }
 
     /**
-     * gets the price of the item.
-     * @return items price.
+     * Gets the price of the item.
+     *
+     * @return The item's price.
      */
+
     public double getItemPrice(){
         return itemPrice;
     }
 
     /**
-     * get the VAT rate for the item.
-     * @return the item vat rate.
+     * Gets the VAT rate for the item.
+     *
+     * @return The item's VAT rate.
      */
     public double getVATRate (){
         return itemVAT;

@@ -7,6 +7,9 @@ import java.util.List;
 
 import saleProcess.main.se.kth.iv1350.integration.*;
 
+/**
+ * The Sale class represents a sale transaction.
+ */
 public class Sale {
     private List<Item> items = new ArrayList<Item>();
     private double totalPrice;
@@ -18,7 +21,7 @@ public class Sale {
     private  double change;
 
     /**
-     * Creat a new instance of sale.
+     * Creates a new instance of Sale.
      */
     public Sale() {
 
@@ -26,12 +29,12 @@ public class Sale {
     }
 
     /**
-     * A method the register items of the current sale.
-     * if the item exist in the inventory then it registers into the list of items.
-     * 
-     * @param item         is the items information
-     * @param itemQuantity is the quantity value of the item.
+     * Registers an item for the current sale.
+     *
+     * @param item         The item's information.
+     * @param itemQuantity The quantity value of the item.
      */
+
     public void registerItem(ItemDTO item, int itemQuantity) {
         if (!(checkIfItemExist(item, itemQuantity))) {
             items.add(new Item(item, itemQuantity));
@@ -61,6 +64,12 @@ public class Sale {
         return result;
     }
 
+    /**
+     * Gets the list of items on the receipt.
+     *
+     * @return The StringBuilder object representing the list of items.
+     */
+
     public StringBuilder itemsList() {
         StringBuilder finalItems = new StringBuilder();
         List<Item> listOfItems = items;
@@ -75,10 +84,6 @@ public class Sale {
         return finalItems;
     }
 
-
-
-
-
     private void getTotVat() {
 
         for (int i = 0; i < items.size(); i++) {
@@ -91,10 +96,17 @@ public class Sale {
         SimpleDateFormat Dateofsale = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         this.saleDate = Dateofsale.format(date);
     }
+
+    /**
+     * Registers the payment amount for the sale.
+     *
+     * @param amountPayment The Payment object representing the amount paid.
+     */
     public void registerPayment(Payment amountPayment) {
         Register register = new Register();
         register.PaymentAmount(amountPayment);
     }
+
 
     private double calculateTotalPrice() {
         runningTotal = 0;
@@ -104,6 +116,12 @@ public class Sale {
         getTotVat();
         return runningTotal;
     }
+    
+    /**
+     * Calculates the total sale amount and change based on the payment amount.
+     *
+     * @param payment The Payment object representing the payment amount.
+     */
     public void getTotalSaleAmount(Payment payment) {
         this.totalPrice = runningTotal;
         this.change = payment.getChangeAmount(runningTotal);

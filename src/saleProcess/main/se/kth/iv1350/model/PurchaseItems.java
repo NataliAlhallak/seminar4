@@ -8,7 +8,7 @@ public class PurchaseItems {
     /**
      * creats an instance of purchased items with the item identifire and item information.
      * @param identifier is the nummer the identify the item.
-     * @param itemsInfo the informations of the item.
+     * @param itemsInfo the information of the item.
      */
     public  PurchaseItems(int identifier, ItemDTO itemsInfo){
         this.itemID = identifier;
