@@ -4,17 +4,18 @@ public class RegisteryCreator {
     private Register PaymentRegistry;
 
     /**
-     *  Creates an instance to registery creator and identifies the payment register.
-     *
+     * Creates an instance of RegisteryCreator and identifies the payment register.
      */
     public RegisteryCreator(){
         this.PaymentRegistry = new Register();
     }
 
     /**
-     * A method to call the payment register.
-     * @return payment registery.
+     * Returns the payment register.
+     *
+     * @return The payment register.
      */
+
     public Register getPaymentRegister(){
         return PaymentRegistry;
     }

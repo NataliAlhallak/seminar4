@@ -6,6 +6,15 @@ import saleProcess.main.se.kth.iv1350.integration.TotalRevenueObserver;
 
 public class TotalRevenueView implements TotalRevenueObserver {
 
+    /**
+     * Class TotalRevenueView implements the TotalRevenueObserver interface.
+     * It displays the total revenue on the user interface.
+     */
+
+    /**
+     * Creates a new TotalRevenueView instance.
+     */
+
     public TotalRevenueView() {
     }
 

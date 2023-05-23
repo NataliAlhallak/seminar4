@@ -1,4 +1,5 @@
 package saleProcess.main.se.kth.iv1350.controller;
+
 /**
  * DatabaseFailureException is a custom exception class that represents
  * an exception when the database server fails to be connected.

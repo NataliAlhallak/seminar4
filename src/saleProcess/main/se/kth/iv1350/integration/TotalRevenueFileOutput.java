@@ -10,6 +10,10 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver {
     private PrintWriter file;
     private static final String LOG_FILE_NAME = "total-revenue-log.txt";
 
+    /**
+     * Initializes the TotalRevenueFileOutput and creates the log file.
+     */
+
     public TotalRevenueFileOutput() {
         try {
             file = new PrintWriter(new FileWriter(LOG_FILE_NAME, true));
@@ -24,10 +28,21 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver {
         saveLogToFile(logMsg);
     }
 
+    /**
+     * Saves the log message to the file.
+     *
+     * @param logMsg The log message to be saved.
+     */
+
     private void saveLogToFile(String logMsg) {
         file.println(logMsg);
         file.flush();
     }
+    /**
+     * Returns the current time and date in the specified format.
+     *
+     * @return The formatted time and date.
+     */
 
     private String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

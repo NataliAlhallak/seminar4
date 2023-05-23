@@ -1,13 +1,20 @@
 package saleProcess.main.se.kth.iv1350.integration;
 import saleProcess.main.se.kth.iv1350.model.*;
+
+    /**
+    * The Printer class is responsible for printing receipts.
+    */
 public class Printer {
+    /**
+     * Creates an instance of Printer.
+     */
     public Printer(){
     }
 
-    /*
-     * the method prints the chosen receipt.
+    /**
+     * Prints the specified receipt.
      *
-     * @param receipt the {@link Receipt} is the object that contains info about the finished sale
+     * @param receipt The Receipt object that contains information about the finished sale.
      */
     public void PrintReceipt (Receipt receipt){
         System.out.println(receipt.creatReceiptString());
