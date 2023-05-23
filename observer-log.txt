@@ -1,1 +1,4 @@
 The total revenue for all sales at 22/05/2023 22:51:22 is = 500.0 SEK
+The total revenue for all sales at 22/05/2023 23:53:50 is = 500.0 SEK
+The total revenue for all sales at 23/05/2023 00:01:44 is = 500.0 SEK
+The total revenue for all sales at 23/05/2023 14:13:37 is = 500.0 SEK
